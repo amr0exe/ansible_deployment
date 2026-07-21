@@ -1,0 +1,30 @@
+l Roles Installed via requirements.yml
+# ==========================================
+# Ignore third-party Galaxy roles (keep your custom 'webserver' role)
+roles/geerlingguy.*
+
+# ==========================================
+# Ansible Temporary, Log & Cache Files
+# ==========================================
+*.retry
+*.log
+*.tmp
+.ansible/
+.ansible_async/
+
+# ==========================================
+# Secrets & Sensitive Data
+# ==========================================
+.vault_password
+*.vault_key
+*.pem
+*.id_rsa
+id_rsa*
+
+# ==========================================
+# Local Vagrant Environment & OS Files
+# ==========================================
+.vagrant/
+.DS_Store
+*.swp
+*~
