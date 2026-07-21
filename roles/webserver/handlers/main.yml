@@ -1,6 +1,6 @@
 ---
 - name: nginx_restart
   community.docker.docker_container:
-      name: nginx
+      name: mynginx
       state: started
       restart: true
