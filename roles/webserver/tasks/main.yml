@@ -4,6 +4,12 @@
       path: /opt/my_web
       state: directory
       mode: '0755'
+
+- name: Read host uptime
+  ansible.builtin.command: uptime -p
+  register: host_uptime
+  changed_when: false
+
 - name: Copy template
   ansible.builtin.template:
       src: index.html.j2
