@@ -2,6 +2,28 @@
 
 This project deploys a jinja template with vars to nginx container on target nodes.
 
+# Run
+- clone the repo: `git clone repo_url`
+- run the playbook: `ansible-playbook site.yml`
+
+# Project Strcuture
+```bash
+  # major files/folder to lookout for
+  \
+  | ansible.config          # contains path to roles, init, etc.
+  | site.yml                # playbook calling roles        
+  | requirements.yml        # required roles
+  | inventor.ini            # target address
+  |
+  | \roles
+  |      | webserver
+  |      |      | tasks/main.yml            # tasks to run on a playbook
+  |      |      | handlers/main.yml         # handler called by nginx
+  |      |      | templates/index.html.j2   # jinja template
+  |      |      | vars/main.yml             # contains variable used on template
+  |      |      |
+  
+```
 
 ## Output Screenshots
 
