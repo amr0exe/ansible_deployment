@@ -10,23 +10,18 @@
                 - ubuntu
 
   tasks:
-      - name: Install tools
-        ansible.builtin.apt:
-            name: unzip
-            state: present
-            update_cache: true
-
-      - name: Ensure target directory exists
-        ansible.builtin.file:
-            path: /opt/test_site
-            state: directory
-            mode: '0755'
+      - name: Download site to ec2
+        ansible.builtin.get_url:
+            url: https://github.com/user-attachments/files/30199374/site.zip
+            dest: /tmp/site.zip
+            mode: '0644'
 
       - name: Extract site
         ansible.builtin.unarchive:
-            src: site.zip
+            src: /tmp/site.zip
             dest: /opt/test_site
-            remote_src: false
+            remote_src: true
+            mode: '0755'
 
       - name: Deploy to nginx container
         community.docker.docker_container:
