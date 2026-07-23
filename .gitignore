@@ -1,7 +1,7 @@
 l Roles Installed via requirements.yml
 # ==========================================
 # Ignore third-party Galaxy roles (keep your custom 'webserver' role)
-roles/geerlingguy.*
+geerlingguy.*
 
 # ==========================================
 # Ansible Temporary, Log & Cache Files
