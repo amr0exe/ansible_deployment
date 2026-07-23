@@ -1,0 +1,38 @@
+- name: deploy site with nginx on remote ec2 box
+  hosts: web
+  become: true
+
+  tasks:
+      - name: download tools
+        ansible.builtin.apt:
+            name:
+                - nginx
+                - unzip
+            state: present
+            update_cache: true
+
+      - name: download zipped site
+        ansible.builtin.get_url:
+            url: https://github.com/user-attachments/files/30199374/site.zip
+            dest: /tmp/site.zip
+            mode: '0644'
+
+      - name: extract site
+        ansible.builtin.unarchive:
+            src: /tmp/site.zip
+            dest: /var/www/html
+            remote_src: true
+            mode: '0755'
+        notify: Restart nginx
+
+      - name: deploy on nginx
+        ansible.builtin.service:
+            name: nginx
+            state: started
+            enabled: true
+
+  handlers:
+      - name: Restart nginx
+        ansible.builtin.service:
+            name: nginx
+            state: restarted
