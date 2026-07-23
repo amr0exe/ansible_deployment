@@ -1,0 +1,29 @@
+# Tasks to deploy to container
+- name: ensure target directory exits
+  ansible.builtin.file:
+      path: /opt/my_web
+      state: directory
+      mode: '0755'
+
+- name: Read host uptime
+  ansible.builtin.command: uptime -p
+  register: host_uptime
+  changed_when: false
+
+- name: Copy template
+  ansible.builtin.template:
+      src: index.html.j2
+      dest: /opt/my_web/index.html
+      mode: '0644'
+  notify: nginx_restart
+
+- name: run nginx container
+  community.docker.docker_container:
+      name: mynginx
+      image: nginx:latest
+      state: started
+      published_ports: 
+        - "8080:80"
+      volumes:
+        - "/opt/my_web:/usr/share/nginx/html:ro" 
+

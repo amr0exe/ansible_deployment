@@ -1,0 +1,11 @@
+- name: Deploy to nginx container
+  hosts: web
+  become: true
+
+  roles:
+      - role: geerlingguy.docker
+        vars:
+            docker_users:
+                - vagrant
+
+      - role: webserver
