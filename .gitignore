@@ -1,4 +1,5 @@
-l Roles Installed via requirements.yml
+# ==========================================
+# Ansible Roles Installed via requirements.yml
 # ==========================================
 # Ignore third-party Galaxy roles (keep your custom 'webserver' role)
 geerlingguy.*
@@ -28,3 +29,37 @@ id_rsa*
 .DS_Store
 *.swp
 *~
+
+# ==========================================
+# Terraform
+# ==========================================
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files — contain full resource state, often with secrets in plain text
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude all .tfvars files — likely to contain sensitive data (passwords, keys, IPs)
+*.tfvars
+*.tfvars.json
+
+# Ignore override files — used to override resources locally, not meant to be shared
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore transient lock info files created during terraform apply
+.terraform.tfstate.lock.info
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore saved plan output files (terraform plan -out=tfplan)
+*tfplan*
