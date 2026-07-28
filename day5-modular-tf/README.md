@@ -77,10 +77,12 @@ terraform apply -var-file=dev.tfvars
 
 - target-group
 
-
 <img width="2027" height="985" alt="Image" src="https://github.com/user-attachments/assets/4090556b-ee37-42aa-95c8-cd293e569608" />
 
 - application-load-balancer
 
-
 <img width="2026" height="1076" alt="Image" src="https://github.com/user-attachments/assets/04fffdfb-b7e5-4757-b18a-c002320ac8e5" />
+
+- padlock_site
+
+<img width="1368" height="655" alt="Image" src="https://github.com/user-attachments/assets/3da9ff0e-ad2d-4ae9-9ffc-95a62c1940f4" />
